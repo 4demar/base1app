@@ -11,7 +11,7 @@ export default function Principal() {
         const checkStorage = async () => {
             try {
                 const value = await AsyncStorage.getItem('TelaInicial'); //busca item pela chave(Key)
-                setInitialRoute(value !== '' ? 'Principal' : 'Corrida');
+                setInitialRoute(value !== '' ? 'Principal' : 'DrawerNavigator');
             } catch (error) {
                 setInitialRoute('Principal')
                 console.error('Error accessing AsyncStorage:', error);
