@@ -30,9 +30,9 @@ export default function RootNavigation() {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={initialRoute}>
+            <Stack.Navigator initialRouteName={'DrawerNavigator'}>
                 <Stack.Screen name='Principal' component={Principal} />
-                <Stack.Screen name='DrawerNavigator' component={DrawerNavigator} />
+                <Stack.Screen name='DrawerNavigator' component={DrawerNavigator} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
