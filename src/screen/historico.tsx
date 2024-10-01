@@ -1,10 +1,10 @@
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button, Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { DrawerParamList } from '../interface/navigation';
 import { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons'
-
+import PopupMenu from '../components/popupMenu';
 
 export default function Historico() {
     const [count, setCount] = useState(0);
@@ -40,45 +40,33 @@ export default function Historico() {
         });
     }, [navigation]);
 
+    const options = [
+        {
+            title: 'Publicar',
+            icon: 'grid',
+            action: () => alert('publicar')
+        },
+        {
+            title: 'Story',
+            icon: 'grid',
+            action: () => alert('Story')
+        },
+        {
+            title: 'Reels',
+            icon: 'videocam',
+            action: () => alert('Reels')
+        },
+        {
+            title: 'Transmitir',
+            icon: 'wifi',
+            action: () => alert('Transmitir')
+        },
+    ]
+
     return (
         <View style={styles.container}>
-            <Text>Count: {count}</Text>
-            <Text>Selected Option: {selectedOption}</Text> {/* Exibir opção selecionada */}
-
-            {/* Modal para exibir opções */}
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                }}
-            >
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalContent}>
-                        <Text style={styles.modalTitle}>Configurações</Text>
-                        <TouchableOpacity
-                            style={styles.optionButton}
-                            onPress={() => handleOptionSelect('Opção 1')}
-                        >
-                            <Text>Opção 1</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.optionButton}
-                            onPress={() => handleOptionSelect('Opção 2')}
-                        >
-                            <Text>Opção 2</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.optionButton}
-                            onPress={() => handleOptionSelect('Opção 3')}
-                        >
-                            <Text>Opção 3</Text>
-                        </TouchableOpacity>
-                        <Button title="Fechar" onPress={() => setModalVisible(false)} />
-                    </View>
-                </View>
-            </Modal>
+            {/* <Text>Count: {count}</Text> */}
+            <PopupMenu />
         </View>
     );
 }
@@ -115,4 +103,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
     },
+    popup: {
+
+    }
 });
