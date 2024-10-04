@@ -1,10 +1,15 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-export default function Abertura() {
+type props = {
+    setIniciarCorrida: (tela: string) => void
+}
+
+export default function Abertura({ setIniciarCorrida }: props) {
 
     async function btnIniciarCorrida() {
-        await AsyncStorage.setItem('TelaInicial', 'DrawerNavigator')
+        await AsyncStorage.setItem('TelaInicial', 'CalcTaxas')
+        setIniciarCorrida('Principal')
     }
 
     return (

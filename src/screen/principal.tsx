@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Abertura from '../components/abertura'
-import Corrida from '../components/corrida';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Corrida from '../components/corrida';
 
 export default function Principal() {
     const [initialRoute, setInitialRoute] = useState<string | null>(null);
@@ -11,7 +11,7 @@ export default function Principal() {
         const checkStorage = async () => {
             try {
                 const value = await AsyncStorage.getItem('TelaInicial'); //busca item pela chave(Key)
-                setInitialRoute(value !== '' ? 'Principal' : 'DrawerNavigator');
+                setInitialRoute(value !== '' ? 'Principal' : 'CalcTaxas');
             } catch (error) {
                 setInitialRoute('Principal')
                 console.error('Error accessing AsyncStorage:', error);
@@ -27,8 +27,8 @@ export default function Principal() {
     return (
         <View style={styles.container}>
             {initialRoute
-                ? <Abertura />
-                : <Corrida />
+                ? <Abertura setIniciarCorrida={setInitialRoute} />
+                : <Corrida setFinalizarCorrida={setInitialRoute} />
             }
         </View>
     );

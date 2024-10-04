@@ -9,7 +9,7 @@ interface FinishRaceModalProps {
     onClose: () => void;
 }
 
-const ModalFinalizarCorrida: React.FC<FinishRaceModalProps> = ({ visible, onClose }) => {
+export default function ModalFinalizarCorrida({ visible, onClose }: FinishRaceModalProps) {
     const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
 
     const finalizarCorrida = () => {

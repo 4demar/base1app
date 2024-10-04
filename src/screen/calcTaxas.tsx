@@ -1,20 +1,14 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, StyleSheet, Text, Button } from "react-native";
 
-
-type props = {
-    setFinalizarCorrida: (tela: string) => void
-}
-
-export default function Corrida({ setFinalizarCorrida }: props) {
+export function CalcularTaxas() {
 
     async function btnFinalizarCorrida() {
         await AsyncStorage.setItem('TelaInicial', 'Principal')
-        setFinalizarCorrida('Principal')
     }
 
     return (
-        <View>
+        <View style={style.container}>
             <Text>Corrida</Text>
             <View style={style.button}>
                 <Button title='Finalizar Corrida' onPress={btnFinalizarCorrida} />
@@ -24,6 +18,12 @@ export default function Corrida({ setFinalizarCorrida }: props) {
 }
 
 const style = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     button: {
         margin: 20,
         padding: 10,

@@ -10,4 +10,5 @@ export type DrawerParamList = {
     InfoApp: undefined;
     Historico: undefined;
     ConfigApp: undefined;
+    FinalizarCorrida: { setModalFinalizar: (visible: boolean) => void }
 };
