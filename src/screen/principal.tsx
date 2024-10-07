@@ -26,7 +26,7 @@ export default function Principal() {
 
     return (
         <View style={styles.container}>
-            {initialRoute
+            {initialRoute === 'Principal'
                 ? <Abertura setIniciarCorrida={setInitialRoute} />
                 : <Corrida setFinalizarCorrida={setInitialRoute} />
             }

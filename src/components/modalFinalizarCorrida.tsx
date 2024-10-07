@@ -3,6 +3,7 @@ import { View, Text, Button, Modal, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerParamList } from '../interface/navigation';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface FinishRaceModalProps {
     visible: boolean;
@@ -12,9 +13,10 @@ interface FinishRaceModalProps {
 export default function ModalFinalizarCorrida({ visible, onClose }: FinishRaceModalProps) {
     const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
 
-    const finalizarCorrida = () => {
-        onClose();
+    const finalizarCorrida = async () => {
+        await AsyncStorage.setItem('TelaInicial', 'Principal')
         navigation.navigate('Principal'); // Navegar para a tela "Principal"
+        onClose();
 
         if (navigation && 'closeDrawer' in navigation) {
             navigation.closeDrawer(); // Usamos "as any" para contornar a checagem de tipo
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
     modalContent: {
         width: 300,
         padding: 20,
-        backgroundColor: 'white',
+        backgroundColor: '#c5c5c5',
         borderRadius: 10,
         alignItems: 'center',
     },

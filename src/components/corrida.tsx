@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
 type props = {
@@ -14,20 +14,34 @@ export default function Corrida({ setFinalizarCorrida }: props) {
     }
 
     return (
-        <View>
-            <Text>Corrida</Text>
+        <View style={style.container}>
+            <Text>Corrida...</Text>
             <View style={style.button}>
-                <Button title='Finalizar Corrida' onPress={btnFinalizarCorrida} />
+                <TouchableOpacity
+                    style={style.button}
+                    onPress={btnFinalizarCorrida}
+                >
+                    <Text style={style.textButton}>Finalizar Corrida</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
 }
 
 const style = StyleSheet.create({
-    button: {
-        margin: 20,
-        padding: 10,
-        width: 100,
-        height: 22,
+    container: {
+        flexDirection: 'column',
+        alignItems: 'center', //Alinhamento do texto
     },
+    button: {
+        width: 120,
+        borderRadius: 4,
+        backgroundColor: '#4b26e0',
+        alignItems: 'center', //Alinhamento do texto
+        padding: 8,
+        marginTop: 10,
+    },
+    textButton: {
+        color: '#fff'
+    }
 });

@@ -44,13 +44,12 @@ export default function RouteNavigator() {
                     headerTitleAlign: 'center'
                 }}
             >
-
                 <Drawer.Screen
                     name="Principal"
                     component={Principal}
                     options={{
                         drawerLabel: 'Principal',
-                        headerShown: telaInicial === 'Principal' ? false : true
+                        // headerShown: telaInicial === 'Principal' ? false : true
                     }}
                 />
 
