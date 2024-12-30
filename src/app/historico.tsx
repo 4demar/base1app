@@ -5,21 +5,14 @@ import { DrawerParamList } from '../interface/navigation';
 import { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons'
 import PopupMenu from '../components/popupMenu';
-import { useTableProdutos } from '../database/useTableProduto';
 
 export default function Historico() {
 
     const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
 
-    const { InserirDadosMocados } = useTableProdutos()
-
-    const handleInsertData = async () => {
-        const db = await InserirDadosMocados();
-    };
-
     return (
         <View style={styles.container}>
-            <Button title="Inserir Produtos Mocados" onPress={handleInsertData} />
+            <Text>Historico</Text>
         </View>
     );
 }

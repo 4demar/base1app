@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, StyleSheet, Text, Button } from "react-native";
 
-export function CalcularTaxas() {
+export default function CalcularTaxas() {
 
     async function btnFinalizarCorrida() {
         await AsyncStorage.setItem('TelaInicial', 'Principal')
